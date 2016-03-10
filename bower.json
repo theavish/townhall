@@ -1,0 +1,22 @@
+{
+  "name": "townhall",
+  "description": "townhall app for mks",
+  "main": "server/server.js",
+  "authors": [
+    "Avi Samloff <avi.samloff@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/theavish/townhall",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.18"
+  }
+}
