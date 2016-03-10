@@ -1,0 +1,10 @@
+<div ng-controller="homeCtrl as home">
+<form ng-submit="home.log(home.cohortSelection)">
+  <p>Choose your cohort:</p>
+  <select ng-model="home.cohortSelection">
+    <option value="MKS32">MKS32</option>
+    <option value="MKS35">MKS35</option>
+  </select>
+  <button>Submit</button>
+</form>
+</div>
