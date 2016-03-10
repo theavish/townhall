@@ -1,3 +1,9 @@
-<div ng-controller="commentListCtrl as commentList">
-  comment list
+<div ng-controller="commentListCtrl as List">
+  <div ng-repeat="comment in List.comments">
+    <span>{{comment.votes}}</span>
+    <span>{{comment.author}}</span>
+    <br />
+    <span>{{comment.text}}</span>
+    <hr />
+  </div>
 </div>
