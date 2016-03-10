@@ -4,16 +4,18 @@
   angular.module('townhall')
     .controller('homeCtrl', homeCtrl);
 
-  homeCtrl.$inject = [];
+  homeCtrl.$inject = ['homeFct'];
 
-  function homeCtrl() {
+  function homeCtrl(homeFct) {
     var ctrl = this;
 
     ctrl.log = log;
+    ctrl.goToCohortTopics = homeFct.goToCohortTopics;
 
     function log() {
       console.log(arguments);
     }
+
   }
 
 })();

@@ -1,7 +1,7 @@
 <div ng-controller="homeCtrl as home">
   <div>
     <p>Choose your cohort:</p>
-    <p><a ui-sref="/MKS32/topics">MKS32</a></p>
-    <p><a ui-sref="/MKS35/topics">MKS35</a></p>
+    <p ng-click="home.goToCohortTopics('MKS32')">MKS32</p>
+    <p ng-click="home.goToCohortTopics('MKS35')">MKS35</p>
   </div>
 </div>
