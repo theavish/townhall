@@ -1,10 +1,7 @@
 <div ng-controller="homeCtrl as home">
-  <form ng-submit="home.log(home.cohortSelection)">
+  <div>
     <p>Choose your cohort:</p>
-    <select ng-model="home.cohortSelection">
-      <option value="MKS32">MKS32</option>
-      <option value="MKS35">MKS35</option>
-    </select>
-    <button>Submit</button>
-  </form>
+    <p><a ui-sref="/MKS32/topics">MKS32</a></p>
+    <p><a ui-sref="/MKS35/topics">MKS35</a></p>
+  </div>
 </div>

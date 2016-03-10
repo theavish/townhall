@@ -13,9 +13,18 @@
   <script src="./routes.js"></script>
   <script src="./home/homeCtrl.js"></script>
   <link rel="stylesheet" type="text/css" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+  <style type="text/css">
+  .nav,
+  .pagination,
+  .carousel,
+  .panel-title a {
+    cursor: pointer;
+  }
+  </style>
   <h1>townhall</h1>
-  <ui-view class="container-fluid">
-  </ui-view>
+  <div class="container-fluid">
+    <ui-view></ui-view>
+  </div>
 </body>
 
 </html>
