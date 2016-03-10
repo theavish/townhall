@@ -12,9 +12,21 @@
         url: '/home',
         templateUrl: './home/homeView.html'
       })
-      .state('submit', {
-        url: '/submit',
-        templateUrl: 'submit/submitView.html'
+      .state('submitTopic', {
+        url: '/:cohort/submitTopic',
+        templateUrl: 'submitTopic/submitTopicView.html'
+      })
+      .state('submitComment', {
+        url: '/:cohort/:topic/submitComment',
+        templateUrl: 'submitComment/submitCommentView.html'
+      })
+      .state('topicList', {
+        url: '/:cohort/topics',
+        templateUrl: 'topicList/topicListView.html'
+      })
+      .state('commentList', {
+        url: '/:cohort/:topic/comments',
+        templateUrl: 'commentList/commentListView.html'
       });
 
       $urlRouterProvider.otherwise('/home');
