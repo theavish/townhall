@@ -18,6 +18,8 @@
   "homepage": "https://github.com/theavish/townhall#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
+    "bookshelf": "^0.9.2",
+    "express": "^4.13.4",
+    "knex": "^0.10.0"
   }
 }
