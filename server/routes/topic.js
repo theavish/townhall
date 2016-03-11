@@ -3,17 +3,46 @@
 
   var routes = {
     createTopic: createTopic,
-    getAllTopics: getAllTopics,
+    getAllTopicsByCohort: getAllTopicsByCohort,
     getTopic: getTopic,
     deleteTopic: deleteTopic
   };
 
+  var Model = require('../db/models/Topic');
+
   function createTopic(req, res) {
-    res.send('createTopic');
+    console.log(req.body);
+    new Model.Topic({
+        title: req.body.title,
+        text: req.body.text,
+        votes: req.body.votes,
+        author: req.body.author,
+        timestamp: new Date(),
+        cohort: req.body.cohort
+      }).save()
+      .then(function(topic) {
+        console.log(topic);
+        res.send(topic);
+      })
+      .catch(function(error) {
+        console.log(error);
+        res.send(error);
+      });
   }
 
-  function getAllTopics(req, res) {
-    res.send('getAllTopics');
+  function getAllTopicsByCohort(req, res) {
+    console.log(req.params);
+    var cohort = req.params.cohort;
+    new Model.Topic().where('cohort', cohort)
+    .fetch()
+    .then(function(topics) {
+      console.log(topics);
+      res.send(topics);
+    })
+    .catch(function(error) {
+      console.log(error);
+      res.send(error);
+    });
   }
 
   function getTopic(req, res) {
