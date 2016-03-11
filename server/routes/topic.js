@@ -33,14 +33,14 @@
   function getAllTopicsByCohort(req, res) {
     var cohort = req.params.cohort;
     new Model.Topic().where('cohort', cohort)
-    .fetchAll()
-    .then(function(topics) {
-      res.send(topics);
-    })
-    .catch(function(error) {
-      console.log(error);
-      res.send(error);
-    });
+      .fetchAll()
+      .then(function(topics) {
+        res.send(topics);
+      })
+      .catch(function(error) {
+        console.log(error);
+        res.send(error);
+      });
   }
 
   function getTopic(req, res) {

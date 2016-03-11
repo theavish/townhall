@@ -1,4 +1,4 @@
-<div ng-controller="topicListCtrl as topicList">
+<div ng-controller="topicListCtrl as topicList" ng-init="topicList.getTopics()">
   <div ng-repeat="topic in topicList.topics">
     <i class="fa fa-chevron-up" ng-click="topicList.upvote(topic.id)"></i> {{topic.votes}}
     <i class="fa fa-chevron-down" ng-click="topicList.downvote(topic.id)"></i> |
