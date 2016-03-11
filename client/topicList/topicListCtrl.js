@@ -4,33 +4,22 @@
   angular.module('townhall')
     .controller('topicListCtrl', topicListCtrl);
 
-  topicListCtrl.$inject = ['topicListFct'];
+  topicListCtrl.$inject = ['topicListFct', '$location'];
 
-  function topicListCtrl(topicListFct) {
+  function topicListCtrl(topicListFct, $location) {
+    var cohort = new RegExp(/MKS[0-9][0-9]/gi).exec($location.path())[0];
 
     var ctrl = this;
 
-    ctrl.topics = [{
-      id: 1,
-      title: 'Test topic',
-      text: 'this is a test topic',
-      votes: 17,
-      author: 'Avi Samloff',
-      postDate: 1457649043292,
-      cohort: 'MKS32'
-    }, {
-      id: 2,
-      title: 'topic number 2',
-      text: 'yet another test topic',
-      votes: 5,
-      author: 'Alex Jeng',
-      postDate: 1457650043292,
-      cohort: 'MKS32'
-    }];
-
     ctrl.goToComments = topicListFct.goToComments;
 
-    
+    topicListFct.getTopics(cohort)
+      .then(function(topics) {
+        console.log('topics for ' + cohort, topics);
+        ctrl.topics = topics;
+      });
+
+
   }
 
 })();

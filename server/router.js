@@ -7,7 +7,7 @@
   var topic = require('./routes/topic.js');
 
   router.post('/api/createTopic', jsonparser, topic.createTopic);
-  router.get('/api/getAllTopicsByCohort', jsonparser, topic.getAllTopicsByCohort);
+  router.get('/api/getAllTopicsByCohort/:cohort', jsonparser, topic.getAllTopicsByCohort);
   router.get('/api/getTopic', topic.getTopic);
   router.delete('/api/deleteTopic', topic.deleteTopic);
 
