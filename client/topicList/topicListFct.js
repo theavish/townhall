@@ -10,7 +10,8 @@
 
     var factory = {
       goToComments: goToComments,
-      getTopics: getTopics
+      getTopics: getTopics,
+      vote: vote
     };
 
     function getTopics(cohort) {
@@ -22,6 +23,17 @@
 
     function goToComments(cohort, topicId) {
       $location.url('/' + cohort + '/' + topicId + '/comments');
+    }
+
+    function vote(type, topicId) {
+      return $http.put('/api/voteOnTopic', {
+          type: type,
+          topicId: topicId
+        })
+        .then(function(response) {
+          console.log(response);
+          return response.data.votes;
+        });
     }
 
     return factory;

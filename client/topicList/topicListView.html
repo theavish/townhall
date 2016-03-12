@@ -1,7 +1,7 @@
 <div ng-controller="topicListCtrl as topicList" ng-init="topicList.getTopics()">
   <div ng-repeat="topic in topicList.topics">
-    <i class="fa fa-chevron-up" ng-click="topicList.upvote(topic.id)"></i> {{topic.votes}}
-    <i class="fa fa-chevron-down" ng-click="topicList.downvote(topic.id)"></i> |
+    <i class="fa fa-chevron-up" ng-click="topicList.vote(1, topic)"></i> {{topic.votes}}
+    <i class="fa fa-chevron-down" ng-click="topicList.vote(0, topic)"></i> |
     <strong> {{topic.title}}</strong> posted by <em>{{topic.author}}</em> |
     <span>
         <span ng-click="topicList.goToComments(topic.cohort, topic.id)">Comments</span>

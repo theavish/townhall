@@ -5,7 +5,8 @@
     createTopic: createTopic,
     getAllTopicsByCohort: getAllTopicsByCohort,
     getTopic: getTopic,
-    deleteTopic: deleteTopic
+    deleteTopic: deleteTopic,
+    voteOnTopic: voteOnTopic
   };
 
   var Model = require('../db/models/Topic');
@@ -48,7 +49,35 @@
   }
 
   function deleteTopic(req, res) {
-    res.send('deleteTopic');
+    var topicId = req.params.id;
+    new Model.Topic().where('id', topicId)
+      .destroy()
+      .then(function(data) {
+        console.log(data);
+        res.send(data);
+      })
+      .catch(function(error) {
+        res.send(error);
+      });
+  }
+
+  function voteOnTopic(req, res) {
+    var type = req.body.type;
+    var topicId = req.body.topicId;
+    new Model.Topic().where('id', topicId)
+      .fetch()
+      .then(function(topic) {
+        if (type == 1) {
+          topic.save(++topic.attributes.votes);
+        } else {
+          topic.save(--topic.attributes.votes);
+        }
+        res.send(topic);
+      })
+      .catch(function(error) {
+        console.log(error);
+        res.send(error);
+      });
   }
 
 
