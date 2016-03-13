@@ -1,4 +1,8 @@
-<div ng-controller="commentListCtrl as List">
+<div ng-controller="commentListCtrl as List" ng-init="List.getTopic()">
+<div class="topic">
+  <span style="font-size: 2em">{{List.topic.title}}</span> <small>- {{List.topic.author}}</small>
+  <p>{{List.topic.text}}</p>
+</div>
   <div ng-repeat="comment in List.comments">
     <span>{{comment.votes}}</span>
     <span>{{comment.author}}</span>

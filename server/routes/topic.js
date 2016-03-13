@@ -4,7 +4,7 @@
   var routes = {
     createTopic: createTopic,
     getAllTopicsByCohort: getAllTopicsByCohort,
-    getTopic: getTopic,
+    getTopicById: getTopicById,
     deleteTopic: deleteTopic,
     voteOnTopic: voteOnTopic
   };
@@ -16,9 +16,7 @@
     new Model.Topic({
         title: req.body.title,
         text: req.body.text,
-        votes: req.body.votes,
         author: req.body.author,
-        timestamp: new Date(),
         cohort: req.body.cohort
       }).save()
       .then(function(topic) {
@@ -44,8 +42,17 @@
       });
   }
 
-  function getTopic(req, res) {
-    res.send('getTopic');
+  function getTopicById(req, res) {
+    var topicId = req.params.id;
+    new Model.Topic().where('id', topicId)
+      .fetch()
+      .then(function(topics) {
+        res.send(topics);
+      })
+      .catch(function(error) {
+        console.log(error);
+        res.send(error);
+      });
   }
 
   function deleteTopic(req, res) {

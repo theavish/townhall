@@ -8,7 +8,7 @@
 
   router.post('/api/createTopic', jsonparser, topic.createTopic);
   router.get('/api/getAllTopicsByCohort/:cohort', jsonparser, topic.getAllTopicsByCohort);
-  router.get('/api/getTopic', topic.getTopic);
+  router.get('/api/getTopicById/:id', topic.getTopicById);
   router.delete('/api/deleteTopic', topic.deleteTopic);
   router.put('/api/voteOnTopic', jsonparser, topic.voteOnTopic);
 
