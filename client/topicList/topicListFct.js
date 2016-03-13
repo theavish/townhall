@@ -11,7 +11,8 @@
     var factory = {
       goToComments: goToComments,
       getTopics: getTopics,
-      vote: vote
+      vote: vote,
+      submitTopic: submitTopic
     };
 
     function getTopics(cohort) {
@@ -33,6 +34,14 @@
         .then(function(response) {
           console.log(response);
           return response.data.votes;
+        });
+    }
+
+    function submitTopic(topic) {
+      return $http.post('/api/createTopic', topic)
+        .then(function(response) {
+          response.data.votes = 0;
+          return response.data;
         });
     }
 

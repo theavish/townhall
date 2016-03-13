@@ -10,10 +10,11 @@
     var cohort = new RegExp(/MKS[0-9][0-9]/gi).exec($location.path())[0];
 
     var ctrl = this;
-
+    ctrl.isWriting = false;
     ctrl.goToComments = topicListFct.goToComments;
     ctrl.getTopics = getTopics;
     ctrl.vote = vote;
+    ctrl.submitTopic = submitTopic;
 
     function vote(type, topic) {
       topicListFct.vote(type, topic.id)
@@ -28,6 +29,18 @@
           console.log('topics for ' + cohort, topics);
           ctrl.topics = topics;
         });
+    }
+
+    function submitTopic() {
+      var topic = ctrl.newTopic;
+      topic.cohort = cohort;
+      topic.author = 'Avi Samloff'; //capture author from GH auth
+      topicListFct.submitTopic(topic)
+        .then(function(response) {
+          ctrl.topics.push(response);
+          ctrl.isWriting = false;
+        });
+
     }
 
 

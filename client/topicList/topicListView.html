@@ -1,13 +1,23 @@
 <div ng-controller="topicListCtrl as topicList" ng-init="topicList.getTopics()">
-  <div ng-repeat="topic in topicList.topics">
-    <i class="fa fa-chevron-up" ng-click="topicList.vote(1, topic)"></i> {{topic.votes}}
-    <i class="fa fa-chevron-down" ng-click="topicList.vote(0, topic)"></i> |
-    <strong> {{topic.title}}</strong> posted by <em>{{topic.author}}</em> |
-    <span>
+  <button class="btn btn-primary" ng-show="!topicList.isWriting" ng-click="topicList.isWriting = true">New Topic</button>
+  <div ng-show="topicList.isWriting">
+    <form ng-submit="topicList.submitTopic()">
+      <input ng-model="topicList.newTopic.title" placeholder="Title" type="text" />
+      <input ng-model="topicList.newTopic.text" placeholder="Text" type="textarea" />
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="topics">
+    <div ng-repeat="topic in topicList.topics">
+      <i class="fa fa-chevron-up" ng-click="topicList.vote(1, topic)"></i> {{topic.votes}}
+      <i class="fa fa-chevron-down" ng-click="topicList.vote(0, topic)"></i> |
+      <strong> {{topic.title}}</strong> posted by <em>{{topic.author}}</em> |
+      <span>
         <span ng-click="topicList.goToComments(topic.cohort, topic.id)">Comments</span>
-          <span ng-hide="!topic.comments">
+      <span ng-hide="!topic.comments">
           ({{topic.comments.length}} comments)
           </span>
-    </span>
+      </span>
+    </div>
   </div>
 </div>
