@@ -1,4 +1,5 @@
 var bookshelf = require('../config').bookshelf;
+var Comment = require('./Comment');
 
 var Topic = bookshelf.Model.extend({
   tableName: 'topics',
